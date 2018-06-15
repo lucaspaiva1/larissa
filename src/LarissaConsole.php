@@ -34,12 +34,13 @@ class LarissaConsole extends Command
      */
     public function handle()
     {
+    	# This code below is just a approach, will be rewrited in the most closest future
     	$folder = 'database/migrations';
     	$folder_temp = 'database/temp';
         $migrations = array_filter(scandir($folder), (function($m) {
     		return $m != '.' && $m != '..';
     	}));
-        $clean = (function($folder) use ($migrations) {
+        $clean_temp_folder = (function($folder) use ($migrations) {
         	foreach ($migrations as $migration) {
         		if (file_exists("$folder/$migration")) {
         			unlink("$folder/$migration");
@@ -47,7 +48,7 @@ class LarissaConsole extends Command
         	}
         	rmdir("$folder");
         });
-        if (file_exists($folder_temp)) $clean($folder_temp);
+        if (file_exists($folder_temp)) $clean_temp_folder($folder_temp);
         mkdir($folder_temp);
         foreach ($migrations as $migration) {
         	$this->warn("Reading $migration");
@@ -65,6 +66,6 @@ class LarissaConsole extends Command
         	$migration_instance->up();
         	$this->info("Collected $migration");
         }
-        $clean($folder_temp);
+        $clean_temp_folder($folder_temp);
     }
 }
