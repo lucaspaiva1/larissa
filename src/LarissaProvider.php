@@ -10,7 +10,11 @@ class LarissaProvider extends ServiceProvider
 	*/
 	public function boot()
 	{
-		var_dump("testing");
+		if ($this->app->runningInConsole()) {
+	        $this->commands([
+	            LarissaConsole::class
+	        ]);
+    	}
 	}
 
 	/**
@@ -20,6 +24,9 @@ class LarissaProvider extends ServiceProvider
 	*/
 	public function register()
 	{
-	//
+		
 	}
+	protected $commands = [
+		LarissaConsole::class
+	];
 }
