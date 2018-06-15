@@ -1,0 +1,39 @@
+{
+  "name": "devfsa/larissa",
+  "type": "library",
+  "license": "MIT",
+  "minimum-stability": "dev-master",
+  "authors": [
+    {
+      "name": "Lucas Paiva",
+      "email": "lukspaiva95@gmail.com"
+    },
+    {
+      "name": "Francisco Santos",
+      "email": "cbo317110@gmail.com"
+    },
+    {
+      "name": "Victor Nascimento",
+      "email": "victormota15@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Larissa\\": "./src"
+    }
+  },
+  "require": {
+    "illuminate/support": "^5.7@dev",
+    "illuminate/database": "^5.7@dev"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Larissa\\LarissaProvider"
+      ]
+    },
+    "branch-alias": {
+      "dev-master": "0.1.1-dev"
+    }
+  }
+}
