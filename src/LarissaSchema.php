@@ -3,6 +3,7 @@ namespace Larissa;
 use Illuminate\Support\Facades\Schema;
 class LarissaSchema extends Schema
 {
-	static function create($name, $fun) {
+	static function create($name, $callback) {
+		LarissaDraw::createTable($name);
 	}
 }

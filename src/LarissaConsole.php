@@ -67,5 +67,6 @@ class LarissaConsole extends Command
         	$this->info("Collected $migration");
         }
         $clean_temp_folder($folder_temp);
+        LarissaDraw::demo();
     }
 }
