@@ -38,7 +38,7 @@ class LarissaConsole extends Command
     	$folder = 'database/migrations';
     	$folder_temp = 'database/temp';
         $migrations = array_filter(scandir($folder), (function($m) {
-    		return $m != '.' && $m != '..';
+    		return $m != '.' && $m != '..' && $m != 'thumbs.dll' && $m != '.DS_Store';
     	}));
         $clean_temp_folder = (function($folder) use ($migrations) {
         	foreach ($migrations as $migration) {
@@ -53,9 +53,17 @@ class LarissaConsole extends Command
         foreach ($migrations as $migration) {
         	$this->warn("Reading $migration");
         	$altered_migration = file_get_contents("$folder/$migration");
-        	$altered_migration = str_replace('Illuminate\Support\Facades\Schema', 'Larissa\LarissaSchema as Schema', $altered_migration);
-        	$altered_migration = str_replace('Illuminate\Database\Schema\Blueprint', 'Larissa\LarissaBlueprint as Blueprint', $altered_migration);
-			preg_match('/(class).*?(extends)/', $altered_migration, $matches);
+        	$altered_migration = str_replace(
+        		'Illuminate\Support\Facades\Schema',
+        		'Larissa\LarissaSchema as Schema',
+        		$altered_migration
+        	);
+        	$altered_migration = str_replace(
+        		'Illuminate\Database\Schema\Blueprint',
+        		'Larissa\LarissaBlueprint as Blueprint',
+        		$altered_migration
+        	);
+					preg_match('/(class).*?(extends)/', $altered_migration, $matches);
         	$migration_obj = $matches[0];
         	$migration_obj = str_replace('class', '', $migration_obj);
         	$migration_obj = str_replace('extends', '', $migration_obj);
