@@ -37,7 +37,7 @@ class LarissaConsole extends Command
     */
     public function handle()
     {
-        # This code below is just a approach, will be rewritten in the most closest future
+        # This code below is just an approach, it will be rewritten in the most closest future
         $folder = 'database/migrations';
         $folder_temp = 'database/temp';
         $migrations = array_filter(scandir($folder), (function($m) {
