@@ -1,6 +1,9 @@
 <?php
+
 namespace Larissa;
+
 use Illuminate\Support\ServiceProvider;
+
 class LarissaProvider extends ServiceProvider
 {
 	/**
