@@ -1,4 +1,4 @@
-# larissa - Database visualisation tool based on Laravel Migrations
+# larissa - Database visualization tool based on Laravel Migrations
 
 # [WIP]
 
